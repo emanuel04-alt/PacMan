@@ -121,7 +121,7 @@ function draw(){
  if(paused||!running){ctx.fillStyle='#030611bb';ctx.fillRect(0,0,456,504);ctx.textAlign='center';ctx.fillStyle='#ffe34d';ctx.font='bold 27px monospace';ctx.fillText(over?'GAME OVER':paused?'PAUSED': 'PAC-MAN',228,238);ctx.fillStyle='white';ctx.font='13px monospace';ctx.fillText(over?'PRESS NEW GAME':paused?'PRESS SPACE TO RESUME':'PRESS START TO PLAY',228,266)}
 }
 function tick(){if(running&&!paused&&!over){updatePlayer();if(power>0)power=Math.max(0,power-.035);if(Math.random()<.8)ghosts.forEach(updateGhost);collisions()}draw()}
-function frame(t){let dt=Math.min(t-last,100);last=t;acc+=dt;while(acc>=145){tick();acc-=145}requestAnimationFrame(frame)}
+function frame(t){let dt=Math.min(t-last,100);last=t;acc+=dt;while(acc>=100){tick();acc-=100}requestAnimationFrame(frame)}
 function start(){if(over)return;running=true;paused=false;$('status').textContent='GOOD LUCK!'}
 function reset(){score=0;lives=3;level=1;over=paused=running=false;hud();initLevel();$('status').textContent='PRESS START TO PLAY';draw()}
 function steer(d){player.next=d;if(!running&&!over)start()}
